@@ -1,0 +1,36 @@
+
+networks:
+  app-network:
+    driver: bridge
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: my_postgres_micro
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-myuser}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-mypass}
+      POSTGRES_DB: ${POSTGRES_DB:-mydb}
+
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data   # <-- must match volume name
+    networks:
+      - app-network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: my_pgadmin_micro
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-admin@example.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+    ports:
+      - "8081:80"
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+
+volumes:
+  pgdata:

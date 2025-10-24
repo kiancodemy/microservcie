@@ -1,7 +1,27 @@
 server:
-  port: 8080
+  port: 9090
+
 spring:
   application:
     name: customer
 
+  datasource:
+    url: jdbc:postgresql://localhost:5432/customer
+
+    username: myuser
+    password: mypass
+
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
 
