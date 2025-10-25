@@ -1,0 +1,27 @@
+server:
+  port: 9091
+
+spring:
+  application:
+    name: fraud
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/fraud
+
+    username: myuser
+    password: mypass
+
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+
