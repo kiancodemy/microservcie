@@ -14,7 +14,7 @@ public class FraudController {
     @GetMapping("/{customerId}")
     public FraudCheckResponse isFraud(@PathVariable("customerId") Long customerId){
         boolean isFraud = fraudService.isFraudCustomer(customerId);
-        log.info("fraud data is saved for customer id "+customerId);
+        log.info("fraud data is saved and send to customer service for customer id which is "+customerId);
         return new FraudCheckResponse(isFraud);
 
     }

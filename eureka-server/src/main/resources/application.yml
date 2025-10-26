@@ -1,0 +1,16 @@
+server:
+  port: 8761
+
+eureka:
+  client:
+    register-with-eureka: false  # server does not register itself
+    fetch-registry: false         # server does not fetch registry
+
+
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+spring:
+  application:
+    name: eureka
