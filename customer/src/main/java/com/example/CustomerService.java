@@ -1,7 +1,8 @@
 package com.example;
-import farud.example.FraudCheckResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.clients.FraudCheckResponse;
+import org.example.clients.FraudClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -11,21 +12,18 @@ import org.springframework.web.client.RestTemplate;
 public class CustomerService {
     private final RestTemplate restTemplate;
     private final CustomerRepository customerRepository;
+    private final FraudClient fraudClient;
 
 
     public void register(CustomerRequest customerRequest) {
-        String url = "http://localhost:9091/api/fraud/{customerId}";
+
         Customer newCustomer=Customer.builder().first(customerRequest.first()).last(customerRequest.last()).email(customerRequest.email()).build();
 
         customerRepository.saveAndFlush(newCustomer);
+        FraudCheckResponse fraud = fraudClient.isFraud(newCustomer.getId());
 
-        FraudCheckResponse response = restTemplate.getForObject(
-                url,
-                FraudCheckResponse.class,
-                newCustomer.getId());
 
-        log.info("customer id is send to fraud");
-        if(response.isFraud()){
+        if(fraud.isFraud()){
             throw new RuntimeException("you are fraud");
         }
 

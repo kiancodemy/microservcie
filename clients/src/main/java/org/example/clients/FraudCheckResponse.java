@@ -1,6 +1,4 @@
-package farud.example;
-
-import lombok.Builder;
+package org.example.clients;
 
 
 public record FraudCheckResponse(boolean isFraud) {
