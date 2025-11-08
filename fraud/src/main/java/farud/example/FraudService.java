@@ -1,6 +1,7 @@
 package farud.example;
 
 import lombok.RequiredArgsConstructor;
+import org.example.clients.notification.NotificationClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 

@@ -2,7 +2,7 @@ package farud.example;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.clients.FraudCheckResponse;
+import org.example.clients.fraud.FraudCheckResponse;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
