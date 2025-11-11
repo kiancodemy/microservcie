@@ -7,10 +7,10 @@ eureka:
     fetch-registry: false         # server does not fetch registry
 
 
-
-logging:
-  level:
-    org.hibernate.SQL: DEBUG
 spring:
+
   application:
     name: eureka
+
+
+

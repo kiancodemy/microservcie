@@ -5,6 +5,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 
 @SpringBootApplication
+
 @EnableFeignClients(basePackages = "org.example.clients")
 
 public class CustomerApplication {

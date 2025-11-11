@@ -25,7 +25,7 @@ public final class NotificationController {
                 .senderName(notificationRequest.sender())
                 .build();
         notificationRepository.save(notificationModel);
-        log.info("Notification sent successfully");
+        log.info("Notification sent successfully  to id {}", notificationModel.getId());
 
 
     }

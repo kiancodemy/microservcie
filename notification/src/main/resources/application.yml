@@ -2,8 +2,10 @@ server:
   port: 9097
 
 spring:
+
   application:
     name: notification
+
 
   datasource:
     url: jdbc:postgresql://localhost:5432/notification
@@ -21,15 +23,25 @@ spring:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
-logging:
-  level:
-
-    org.hibernate.SQL: trace
-
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
     fetch-registry: true
     register-with-eureka: true
+
+
+logging:
+  pattern:
+    console: "[%X{traceId:-},%X{spanId:-}] %msg%n"
+
+
+management:
+
+  tracing:
+
+    enabled: true
+    sampling:
+      probability: 1.0
+
 

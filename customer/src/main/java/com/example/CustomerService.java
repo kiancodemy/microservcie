@@ -24,6 +24,7 @@ public class CustomerService {
         Customer newCustomer=Customer.builder().first(customerRequest.first()).last(customerRequest.last()).email(customerRequest.email()).build();
 
         customerRepository.saveAndFlush(newCustomer);
+        log.info("it is send to fraud {}",newCustomer.getId());
         FraudCheckResponse fraud = fraudClient.isFraud(newCustomer.getId());
 
 

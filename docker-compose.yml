@@ -32,5 +32,13 @@ services:
     networks:
       - app-network
 
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin_server
+    ports:
+      - "9411:9411"
+    networks:
+      - app-network
+
 volumes:
   pgdata:
