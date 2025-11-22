@@ -15,8 +15,9 @@
     <module>eureka-server</module>
     <module>clients</module>
     <module>notification</module>
-      <module>apigateway</module>
     <module>amqp</module>
+    <module>apigateway</module>
+
 
   </modules>
 
@@ -61,9 +62,6 @@
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
     </dependency>
-
-
-
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-openfeign</artifactId>

@@ -2,7 +2,6 @@ package org.example.clients.notification;
 
 
 import org.example.clients.FeignTracingConfig;
-import org.example.clients.fraud.FraudClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

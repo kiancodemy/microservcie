@@ -1,4 +1,4 @@
-package org.example;
+package org.example.notifications;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

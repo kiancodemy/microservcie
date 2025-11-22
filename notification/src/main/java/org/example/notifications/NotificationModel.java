@@ -1,4 +1,4 @@
-package org.example;
+package org.example.notifications;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

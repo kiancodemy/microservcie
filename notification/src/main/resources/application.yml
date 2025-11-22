@@ -2,7 +2,6 @@ server:
   port: 8097
 
 spring:
-
   application:
     name: notification
 
@@ -12,6 +11,9 @@ spring:
 
     username: myuser
     password: mypass
+
+  rabbitmq:
+    addresses: localhost:5672
 
 
   jpa:
@@ -44,3 +46,13 @@ management:
   zipkin:
     tracing:
       endpoint: http://localhost:9411/api/v2/spans
+
+
+
+rabbitmq:
+  exchange:
+    internal: internal-exchange
+  queue:
+    notif: notif-queue
+  routing-keys:
+    int: internal-key
