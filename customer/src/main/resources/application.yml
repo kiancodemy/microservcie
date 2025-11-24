@@ -15,6 +15,10 @@ spring:
     password: mypass
 
 
+  rabbitmq:
+    addresses: localhost:5672
+
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -35,6 +39,9 @@ eureka:
 
 logging:
   level:
+    org:
+
+      example=DEBUG:
     org.springframework.cloud.gateway: DEBUG
   pattern:
     console: "[%X{traceId:-},%X{spanId:-}] %msg%n"

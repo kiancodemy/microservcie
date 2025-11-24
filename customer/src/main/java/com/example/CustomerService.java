@@ -1,6 +1,7 @@
 package com.example;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.amqp.RabbitmqMessageProducer;
 import org.example.clients.fraud.FraudCheckResponse;
 import org.example.clients.fraud.FraudClient;
 import org.example.clients.notification.NotificationClient;
@@ -16,7 +17,7 @@ public class CustomerService {
 
     private final CustomerRepository customerRepository;
     private final FraudClient fraudClient;
-    private final NotificationClient notificationClient;
+    private final RabbitmqMessageProducer rabbitmqMessageProducer;
 
 
     public void register(CustomerRequest customerRequest) {
@@ -39,10 +40,7 @@ public class CustomerService {
                 .sender(customerRequest.first())
                 .sentAt(LocalDateTime.now())
                 .build();
-        notificationClient.sendNotification(notificationRequest);
-
-
-
-
+        ///notificationClient.sendNotification(notificationRequest);
+        rabbitmqMessageProducer.publish(notificationRequest,"internal-exchange","internal-key");
     }
 }
